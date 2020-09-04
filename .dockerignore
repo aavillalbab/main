@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+
+.git/ 
+node_modules/ 
+dist/
+build/
+
+tmp/
+temp/
+
+*.md
