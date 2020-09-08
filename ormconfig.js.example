@@ -1,0 +1,23 @@
+const { join } = require('path')
+
+module.exports = [
+   {
+      name: "default",
+      type: "mysql",
+      host: "172.31.15.235",
+      port: 3306,
+      username: "ekodb",
+      password: "D4t43k0@4m1.2020",
+      database: "ekosave-access",
+      entities: [join(__dirname, "/dist/entities/*.js")],
+      migrations: [join(__dirname, "/dist/migrations/*.js")],
+      logging: false,
+      cache: true,
+      timezone: 'Z',
+      connectTimeout: 30000,
+      cli: {
+         entitiesDir: ["src/entities"],
+         migrationsDir: "src/migrations"
+      }
+   }
+]

@@ -11,3 +11,5 @@ package-lock.json
 ormconfig.*
 
 .env.*
+!.env.dev.example
+!ormconfig.js.example
