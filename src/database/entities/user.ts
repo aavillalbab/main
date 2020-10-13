@@ -13,13 +13,6 @@ import {
 } from 'typeorm';
 
 import { compare, genSaltSync, hashSync } from 'bcrypt';
-
-import { AfiliationType } from './afiliation-type';
-import { ConsultationAnswer } from './consultation-answer';
-import { Eps } from './eps';
-import { MedicalProcedure } from './medical-procedure';
-import { Neightboor } from './neightboor';
-import { Payment } from './payment';
 import { Profile } from './profile';
 import { UserLog } from './user-log';
 
@@ -205,28 +198,6 @@ export class User {
     }
 
     // relationships
-    @ManyToOne(
-        type => AfiliationType,
-        at => at.users,
-        { nullable: true }
-    )
-    @JoinColumn({ name: 'afiliation_type_id', referencedColumnName: 'id' })
-    afiliationType!: AfiliationType;
-
-    @ManyToOne(
-        type => Eps,
-        eps => eps.users,
-        { nullable: true }
-    )
-    @JoinColumn({ name: 'eps_id', referencedColumnName: 'id' })
-    eps!: Eps;
-
-    @ManyToOne(
-        type => Neightboor,
-        neightboor => neightboor.users
-    )
-    @JoinColumn({ name: 'neightboor_id', referencedColumnName: 'id' })
-    neightboor!: Neightboor;
 
     @ManyToOne(
         type => Profile,
@@ -235,27 +206,10 @@ export class User {
     @JoinColumn({ name: 'profile_id', referencedColumnName: 'id' })
     profile!: Profile;
 
-    @OneToMany(
-        type => MedicalProcedure,
-        mp => mp.patiente
-    )
-    medicalProcedures!: MedicalProcedure[];
-
-    @OneToMany(
-        type => ConsultationAnswer,
-        consultationAnswer => consultationAnswer.user
-    )
-    public consultationsAnswers!: ConsultationAnswer[];
 
     @OneToOne(
         type => UserLog,
         userLog => userLog.user
     )
     userLog: UserLog;
-
-    @OneToMany(
-        type => Payment,
-        payment => payment.user
-    )
-    payments!: Payment[];
 }

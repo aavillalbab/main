@@ -3,7 +3,6 @@ import {
     RHFactor,
     IdentificationType,
     Gender,
-    MedicalProcedure,
     UserLog
 } from 'src/database';
 
